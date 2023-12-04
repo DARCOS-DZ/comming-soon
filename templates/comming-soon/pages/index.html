@@ -1,0 +1,150 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>{{config.name}}</title>
+<meta name="description" content="{{config.meta_description}}"/>
+<meta property="og:title" content="{{config.name}}" />
+<meta property="og:description" content="{{config.meta_description}}" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="media/{{config.logo}}" />
+<link rel="icon" type="image/x-icon" href="media/{{config.fav_icon}}">
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+<script src="{% static 'comming-soon/cdn-cgi/apps/head/OkbNSnEV_PNHTKP2_EYPrFNyZ8Q.js' %}"></script><link rel="stylesheet" href="{% static 'comming-soon/css/app.min.css' %}" />
+</head>
+<body>
+<div class="animation anim-dark" data-aos="slide-effect-2">
+<div class="wrapper animation-inner">
+<div class="background bg-one overlay" style="background-image: url(media/{{config.about_image}}) !important">
+</div>
+
+<div class="content-section d-flex justify-content-center align-items-center">
+<div class="v-lines">
+<div class="vline-1"></div>
+<div class="vline-2"></div>
+<div class="vline-3"></div>
+<div class="vline-4"></div>
+</div>
+<div class="container">
+<div class="center-content text-light align-self-center">
+{% if config.logo %}
+<img src="media/{{config.logo}}" class="img-fluid" alt="{{config.name}}" data-aos="fade" data-aos-delay="1800" />
+{% else %}
+<img src="{% static 'comming-soon/images/freedom.png' %}" class="img-fluid" alt="creative freedom" data-aos="fade" data-aos-delay="1800" />
+{% endif %}
+<p class="lead my-4" data-aos="fade" data-aos-delay="2500">{{config.short_description}}</p>
+
+<span class="animation anim-light" data-aos="slide-effect-btn" data-aos-delay="3000">
+  <a href="javascript:void(0);" class="btn btn-lg btn-outline" data-toggle="modal" data-target="#contactModal">Contactez nous</a>
+</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="sidebar sidebar-dark d-flex flex-column justify-content-end" data-aos="slide-left" data-aos-delay="3000">
+<div class="hamburger-menu mb-auto">
+<div class="hamburger">
+<div class="hamburger-line hamburger-line-1"></div>
+
+<div class="hamburger-line hamburger-line-2"></div>
+
+<div class="hamburger-line hamburger-line-3"></div>
+
+<div class="hamburger-line hamburger-line-4"></div>
+
+</div>
+
+</div>
+
+<div class="social-links">
+<a href="mailto:{{config.mail}}" style="text-transform: none !important" target="_blank">email: {{config.mail}}</a>
+<a href="tel:{{config.phone}}" style="text-transform: none !important" target="_blank">phone: {{config.phone}}</a>
+<a style="text-transform: none !important" target="_blank">Adresse: {{config.adresse}}</a>
+</div>
+</div>
+
+<div class="fullscreen-content dark-bg" id="fscontent">
+<div class="container">
+<h1 class="text-center my-md mb-5" data-aos="fade-in" data-aos-duration="300">{{config.name}}</h1>
+<div class="row">
+  <div class="center-content text-light align-self-center" style="display: block; margin: auto">
+    <img src="media/{{config.logo}}" class="img-fluid" alt="{{config.name}}" data-aos="fade" data-aos-delay="1800"/>
+  </div>
+<div class="col-md-12">
+
+<p class="lead" data-aos="fade-in" data-aos-duration="300" style="text-align: center">{{config.about_the_company}}</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+<div class="modal modal-center modal-dark" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-body">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true"><i class="pe-7s-close pe-2x"></i></span>
+</button>
+<h2 class="modal-title" id="contactModalLabel">Contactez-nous</h2>
+<p class="lead text-center text-light p-2">
+Vous avez une question ? Vous voulez en savoir plus sur notre projet super génial ? Envoyez-nous simplement un message.
+</p>
+<script>
+  function onSubmit(token) {
+    document.getElementById("contact").submit();
+  }
+</script>
+<form class="pr-4 pl-4 pb-4" action="/" method="post" id="contact">
+  {% csrf_token %}
+<div class="row">
+<div class="col-sm-6">
+<div class="form-group md-form">
+<input type="text" name="fname" class="form-control input-material" autocomplete="off" required>
+<span class="highlight"></span>
+<span class="bar"></span>
+<label class>Votre nom complet</label>
+</div>
+</div>
+<div class="col-sm-6">
+<div class="form-group md-form">
+<input type="email" name="email" class="form-control input-material" autocomplete="off" required>
+<span class="highlight"></span>
+<span class="bar"></span>
+<label class>Votre Email</label>
+</div>
+</div>
+</div>
+<div class="form-group md-form">
+<textarea name="message" class="form-control input-material" rows="5" required></textarea>
+<span class="highlight"></span>
+<span class="bar"></span>
+<label class>Votre Message</label>
+</div>
+<div class="form-group text-center">
+<button type="submit" class="btn g-recaptcha btn-lg btn-outline" id="js-contact-btn" data-sitekey="{{config.GOOGLE_RECAPTCHA_SITE_KEY}}" data-callback='onSubmit' data-action='submit' >Send Message</button>
+<div id="js-contact-result" data-success-msg="Success, Please check your email." data-error-msg="Oops! Something went wrong"></div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+<script data-cfasync="false" src="{% static 'comming-soon/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script><script src="{% static 'comming-soon/js/app.min.js' %}"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317" integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA==" data-cf-beacon='{"rayId":"83045a8f8c55a85c","version":"2023.10.0","r":1,"token":"1a2187940c214caa9d3fed19b4904902","b":1}' crossorigin="anonymous"></script>
+</body>
+</html>
