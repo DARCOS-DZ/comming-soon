@@ -43,6 +43,13 @@
 <span class="animation anim-light" data-aos="slide-effect-btn" data-aos-delay="3000">
   <a href="javascript:void(0);" class="btn btn-lg btn-outline" data-toggle="modal" data-target="#contactModal">Contactez nous</a>
 </span>
+<span style="display: flex; height: 80px; position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,.3);">
+  <div class="social-links" style="transform: none; display: flex; align-items: center; justify-content: center; flex: 1; margin: auto;">
+  <a href="mailto:{{config.mail}}" style="text-transform: none !important" target="_blank">Email: {{config.mail}}</a>
+  <a href="tel:{{config.phone}}" style="text-transform: none !important" target="_blank">Phone: {{config.phone}}</a>
+  <a style="text-transform: none !important" target="_blank">Adresse: {{config.adresse}}</a>
+  </div>
+</span>
 </div>
 
 </div>
@@ -64,11 +71,7 @@
 
 </div>
 
-<div class="social-links">
-<a href="mailto:{{config.mail}}" style="text-transform: none !important" target="_blank">email: {{config.mail}}</a>
-<a href="tel:{{config.phone}}" style="text-transform: none !important" target="_blank">phone: {{config.phone}}</a>
-<a style="text-transform: none !important" target="_blank">Adresse: {{config.adresse}}</a>
-</div>
+
 </div>
 
 <div class="fullscreen-content dark-bg" id="fscontent">
